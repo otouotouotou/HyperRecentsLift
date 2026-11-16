@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  アダプティブアイコンの前景: 上向き矢印 + 下の土台バー。
+  「画面全体を上に持ち上げる」を表す。単色 fill のみで描く。
+  108dp キャンバス。
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- 矢印の頭 (三角形) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,24 L70,46 L38,46 Z" />
+    <!-- 矢印の軸 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M49,46 L59,46 L59,68 L49,68 Z" />
+    <!-- 土台バー (画面の下端) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,76 L76,76 L76,83 L32,83 Z" />
+</vector>

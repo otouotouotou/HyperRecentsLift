@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HyperRecentsLift</string>
+    <string name="xposed_description">Shifts the whole HyperOS recents screen (cards and the clear-all button) upward</string>
+</resources>

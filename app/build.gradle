@@ -1,0 +1,68 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.overnight.hyperrecentslift'
+    // compileSdk 37: libxposed API 102 系の AAR メタデータに合わせた
+    // 他モジュールと同構成。API 37 は android-37.0 としてのみ
+    // 提供されるため release DSL で指定する
+    compileSdk {
+        version = release(37) {
+            it.minorApiLevel = 0
+        }
+    }
+
+    defaultConfig {
+        applicationId 'com.overnight.hyperrecentslift'
+        // LSPosed は Android 8.1 (API 27) 以降が対象
+        minSdk 27
+        targetSdk 35
+        versionCode 9
+        versionName '0.8'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    // src/main/resources の META-INF/xposed/* を APK に確実に入れる
+    // (AGP のデフォルト packaging では META-INF が除外されうるため)
+    packaging {
+        resources {
+            merges += 'META-INF/xposed/*'
+            excludes += '**'
+        }
+    }
+}
+
+// Kotlin のコンパイル先を JVM 17 にそろえる
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
+}
+
+dependencies {
+    // Modern Xposed API (libxposed) 102。
+    // 実行時はフレームワーク側から提供されるので compileOnly
+    compileOnly 'io.github.libxposed:api:102.0.0'
+    // v0.7 から設定なしの固定値動作にしたため service は使わない
+}
+
+// AGP 9 + Groovy DSL では Android Studio の同期用タスク
+// prepareKotlinBuildScriptModel が生成されず、同期が
+// "Task 'prepareKotlinBuildScriptModel' not found in project ':app'"
+// で落ちることがある (Asrish v0.10.2 で発生)。空のスタブを登録しておく
+tasks.register('prepareKotlinBuildScriptModel') {
+    description = 'Stub for Android Studio sync (Kotlin build script model)'
+}
