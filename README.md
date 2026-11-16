@@ -15,7 +15,7 @@ HyperOS 3 のタスク画面では一括終了ボタンが画面最下部にあ�
 
 - v0.8: ソース整理のみ (コメントの清書、未使用のテーマを削除)。
   挙動は v0.7 と同一
-- v0.7: 値を固定化 (全体 75dp / ボタン単独 15dp)。設定画面と
+- v0.7: 値を固定化 (全体 75dp / ボタン単独 15dp)。
 - v0.2: ずらしの維持方式を変更 (v0.1 は効いたり効かなかったりだった)。
   ずらし量は固定 80dp のまま
 - v0.1: 初版。生成時に 1 回だけずらす方式
@@ -53,7 +53,7 @@ The whole screen sits low, cards included, so this module shifts the entire cont
 
 - v0.8: Source cleanup only (tidied comments, removed an unused theme).
   Behavior is identical to v0.7
-- v0.7: Values fixed (whole screen 75dp / button 15dp on its own). The settings screen and
+- v0.7: Values fixed (whole screen 75dp / button 15dp on its own).
 - v0.2: Changed how the shift is maintained (v0.1 worked only sometimes).
   The shift amount stayed fixed at 80dp
 - v0.1: First version. Shifted only once, when the view was created
