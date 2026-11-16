@@ -35,3 +35,41 @@ HyperOS 3 のタスク画面では一括終了ボタンが画面最下部にあ�
   特定にあたり、HyperCeiler (AGPL-3.0、作者 sevtinge ほか、
   https://github.com/ReChronoRain/HyperCeiler) の公開ソースを参照した。
   コードの流用はない
+
+## English
+
+# HyperRecentsLift
+
+An LSPosed module that shifts the HyperOS launcher's task screen, cards and all, upward.
+Modern Xposed API (libxposed) 102 / Kotlin.
+
+## Motivation
+
+On HyperOS 3's task screen, the clear-all button is at the very bottom of the screen, and the gesture used to open the task screen can touch the button and close all tasks by accident.
+The whole screen sits low, cards included, so this module shifts the entire container up to avoid that.
+
+
+## Versions
+
+- v0.8: Source cleanup only (tidied comments, removed an unused theme).
+  Behavior is identical to v0.7
+- v0.7: Values fixed (whole screen 75dp / button 15dp on its own). The settings screen and
+- v0.2: Changed how the shift is maintained (v0.1 worked only sometimes).
+  The shift amount stayed fixed at 80dp
+- v0.1: First version. Shifted only once, when the view was created
+
+## How to use
+
+1. Enable the module in the LSPosed manager and select "HyperOS Launcher
+   (com.miui.home)" in its scope
+2. Restart the launcher (rebooting the device also works)
+3. Open the task screen and check
+
+## License / Credits
+
+- This module's code is original, released under Apache-2.0
+- Dependency: libxposed API (Apache-2.0, compileOnly)
+- The hook target class name (`com.miui.home.recents.views.RecentsContainer`) was
+  identified by referencing the published source of HyperCeiler (AGPL-3.0, by
+  sevtinge and others, https://github.com/ReChronoRain/HyperCeiler).
+  No code was reused
